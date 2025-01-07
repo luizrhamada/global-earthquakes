@@ -65,11 +65,11 @@ for earthquake_dict in all_earthquake:
     mag = earthquake_dict['properties']['mag']
     lon = earthquake_dict['geometry']['coordinates'][0] # Lembrando que GeoJSON segue a convenção (longitude, latitude)
     lat = earthquake_dict['geometry']['coordinates'][1]
-    eq_title = earthquake_dict['properties']['title']
+    earthquake_title = earthquake_dict['properties']['title']
     mags.append(mag)
     lons.append(lon)
     lats.append(lat)
-    eq_titles.append(eq_title)
+    earthquake_title.append(eq_title)
 
 print(mags[:5]) # [1.6, 1.6, 2.2, 3.7, 2.92000008]
 print(lons[:5]) # [-150.7585, -153.4716, -148.7531, -159.6267, -155.248336791992]
