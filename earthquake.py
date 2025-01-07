@@ -60,7 +60,7 @@ Dentro do loop, cada terremoto será representado por eq_dict. Aqui, a magnitude
 
 # Magnitude, Localização
 
-mags, lons, lats, eq_titles = [], [], [], []
+mags, lons, lats, earthquakes_title = [], [], [], []
 for earthquake_dict in all_earthquake:
     mag = earthquake_dict['properties']['mag']
     lon = earthquake_dict['geometry']['coordinates'][0] # Lembrando que GeoJSON segue a convenção (longitude, latitude)
@@ -69,7 +69,7 @@ for earthquake_dict in all_earthquake:
     mags.append(mag)
     lons.append(lon)
     lats.append(lat)
-    earthquake_title.append(eq_title)
+    earthquakes_title.append(earthquake_title)
 
 print(mags[:5]) # [1.6, 1.6, 2.2, 3.7, 2.92000008]
 print(lons[:5]) # [-150.7585, -153.4716, -148.7531, -159.6267, -155.248336791992]
@@ -93,6 +93,6 @@ fig = px.scatter_geo(lat=lats, lon=lons, title=title,
                      color_continuous_scale='rainbow',
                      labels={'color': 'Magnitude na Escala Richter'},
                      projection='natural earth',
-                     hover_name=eq_titles,
+                     hover_name=earthquakes_title,
                      )
 fig.show()
