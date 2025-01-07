@@ -17,7 +17,7 @@ que iremos trabalhar. Ressalta-se que a pasta deve ser criada onde esta sendo ar
 arq = Path('global_data_earthquake/earthquake_data_07JAN2025.geojson') # últimos 30 dias de registro
 file = open(arq, encoding="utf8")
 contents = file.read()
-all_eq_data = json.loads(contents)
+all_earthquake_data = json.loads(contents)
 
 """
 {
@@ -44,7 +44,7 @@ IMPORTANTE: O formato GeoJSON segue a convenção (longitude, latitude).
 """
 
 # Primeiramente, vamos criar uma lista que examina todos os terremotos
-all_eq_dicts = all_eq_data['features']
+all_earthquake = all_earthquake_data['features']
 # print(len(all_eq_dicts)) # contém 160 registros de terremotos
 
 """
@@ -61,11 +61,11 @@ Dentro do loop, cada terremoto será representado por eq_dict. Aqui, a magnitude
 # Magnitude, Localização
 
 mags, lons, lats, eq_titles = [], [], [], []
-for eq_dict in all_eq_dicts:
-    mag = eq_dict['properties']['mag']
-    lon = eq_dict['geometry']['coordinates'][0] # Lembrando que GeoJSON segue a convenção (longitude, latitude)
-    lat = eq_dict['geometry']['coordinates'][1]
-    eq_title = eq_dict['properties']['title']
+for earthquake_dict in all_earthquake:
+    mag = earthquake_dict['properties']['mag']
+    lon = earthquake_dict['geometry']['coordinates'][0] # Lembrando que GeoJSON segue a convenção (longitude, latitude)
+    lat = earthquake_dict['geometry']['coordinates'][1]
+    eq_title = earthquake_dict['properties']['title']
     mags.append(mag)
     lons.append(lon)
     lats.append(lat)
